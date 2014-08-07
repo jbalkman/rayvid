@@ -1,0 +1,216 @@
+<!doctype html>
+
+<html>
+<head>
+
+<meta charset="utf-8" />
+<title>RAVid</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap -->
+<link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for carousel -->
+<link href="static/css/carousel.css" rel="stylesheet">
+
+<!-- My custom styles  -->
+<link href="static/css/custom.css" rel="stylesheet">
+
+<!-- JQuery File Upload -->
+<link rel="stylesheet" href="static/css/styles.css">
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.filedrop.js"></script>
+<script type="text/javascript" src="static/js/display.js"></script>
+<script type="text/javascript" src="static/js/upload.js"></script>
+<script type="text/javascript" src="static/js/submit.js"></script>
+<script src="http://jwpsrv.com/library/m26HJB26EeSKviIACyaB8g.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+
+<script src="static/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div class="navbar-wrapper">
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RAVid (Radiology Reporting Video Tool)</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <!--<li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>-->
+            </ul>
+          </div>
+        </div>
+      </div>    
+    </div>
+  </div>
+    
+  <!-- Carousel 
+       ================================================== -->
+  <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+        <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:" alt="First slide">
+        <img src="static/img/Fig1.jpg" alt="First slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Cloud-based Breast Density Analysis</h1>
+            <p>Take breast density measurement to the cloud, where computationally intensive processes can be managed by third party servers.</p>
+            <p><a class="btn btn-lg btn-primary" href="#dropbox-container" role="button">Try It Now</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:" alt="Second slide">
+        <img src="static/img/Fig2.jpg" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Customized Open Source Algorithms</h1>
+            <p>Python-based open source algorithms can be customized and compared to create a collaborative research test bench.</p>
+            <p><a class="btn btn-lg btn-primary" href="#dropbox-container" role="button">Try It Now</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:" alt="Third slide">
+        <img src="static/img/Fig3.jpg" alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Easy Usage</h1>
+            <p>Drag and drop any CC or MLO mammogram in DICOM, TIFF, or JPEG format into the drop box and click the analyze button to begin processing. Results will appear below.</p>
+            <p><a class="btn btn-lg btn-primary" href="#dropbox-container" role="button">Try It Now</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+  </div> --> <!-- /.carousel -->
+  <!-- Marketing messaging and featurettes
+       ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <!--<div id="download-container">
+      <div class="span7 text-center"><h3>Downloadable Test Files (download, then drag and drop into the container below)</h3></div>
+      <div class="row">
+	<div class="col-md-3 col-md-offset-3"><h4>Test Patient 1</h4></div>
+	<div class="col-md-3"><h4>Test Patient 2</h4></div>
+      </div>
+      <div class="row">
+	<div class="col-md-3 col-md-offset-3">
+	  <a href="/downloads/MRI_1.zip" class="predownload" title="Patient 1 MRI" id="/downloads/MRIPreview_1.jpg">
+	    <img src="/downloads/MRIPreview_1.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
+	  <a href="/downloads/Mammo_1.zip" class="predownload" title="Patient 1 Mammogram" id="/downloads/MammoPreview_1.jpg">
+	    <img src="/downloads/MammoPreview_1.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
+	</div>
+	<div class="col-md-3">
+	  <a href="/downloads/MRI_2.zip" class="predownload" title="Patient 2 MRI" id="/downloads/MRIPreview_2.jpg">
+	    <img src="/downloads/MRIPreview_2.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
+	  <a href="/downloads/Mammo_2.zip" class="predownload" title="Patient 2 Mammogram" id="/downloads/MammoPreview_2.jpg">
+	    <img src="/downloads/MammoPreview_2.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
+	</div>
+      </div>
+  </div>-->
+
+  <div class="container marketing">
+    <hr class="featurette-divider"> 
+      <div class="col-md-8 col-md-offset-2">    
+	<div id="myVideoPlayer" class="center-block">Loading the player...</div>
+	<script type="text/javascript">
+	  jwplayer("myVideoPlayer").setup({
+	  file: "{{url}}",
+	  image: "https://s3.amazonaws.com/ravids/example2.jpg",
+	  width: 640,
+	  height: 360
+	  });
+	</script><br>
+      </div>
+    </div>
+  </div>
+  
+<div class="container marketing">
+   <form class="bs-example bs-example-form" role="form">
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="input-group">
+               <span class="input-group-btn">
+                  <button class="btn btn-primary" id="loadVideoButton" type="button">
+                     LOAD OTHER VIDEO
+                  </button>
+               </span>
+               <input type="text" class="form-control">
+            </div><!-- /input-group -->
+         </div><!-- /.col-lg-6 --><br>
+      </div>
+   </form>
+</div>
+<!--  <div class="span7 text-center">    
+
+    <p><p><p><a class="btn btn-lg btn-primary" id="loadVideoButton" role="button">LOAD VIDEO</a></p></p></p>
+  </div>
+</div>-->
+
+<div class="container marketing">
+    <hr class="featurette-divider"> 
+    <div class="span7 text-center">    
+      <div id="loading-indicator" style="display:none">
+	<img src="static/img/ajaxloader.gif">
+	<h3>Please be patient while we process your video.</h3>
+	<h3>This process may take several minutes.</h3>
+	<hr class="featurette-divider">
+      </div>
+      
+      <div id="dropbox-container">
+	<h3>Drop any video below, click the Process button, and receive a video link.</h3>
+	<div id="dropbox">
+	  <span class="message">Drop videos here to upload.</span>
+	</div>      
+	<p><a class="btn btn-lg btn-primary" id="processVideoButton" role="button">PROCESS VIDEO</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- /END THE FEATURETTES -->
+  
+  <!-- FOOTER -->
+  <div class="container marketing">
+    <hr class="featurette-divider">
+    <div class="span7 text-center">   
+      <footer>
+	<p class="pull-right"><a href="#">Back to top</a></p>
+       <p>&copy; 2014 MOO Scans &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+    </div><!-- /.container -->
+  </div>
+</body>
+</html>
