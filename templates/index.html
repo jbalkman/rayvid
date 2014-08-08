@@ -4,7 +4,7 @@
 <head>
 
 <meta charset="utf-8" />
-<title>RAVid</title>
+<title>RAYVID</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Bootstrap -->
@@ -24,6 +24,8 @@
 <script type="text/javascript" src="static/js/display.js"></script>
 <script type="text/javascript" src="static/js/upload.js"></script>
 <script type="text/javascript" src="static/js/submit.js"></script>
+<script type="text/javascript" src="static/js/hover.js"></script>
+<script type="text/javascript" src="static/js/jquery.fileDownload.js"></script>
 <script src="http://jwpsrv.com/library/m26HJB26EeSKviIACyaB8g.js"></script>
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -44,7 +46,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">RAVid (Radiology Reporting Video Tool)</a>
+            <a class="navbar-brand" href="#">RAYVID (Radiology Video Reporting Tool)</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -149,7 +151,7 @@
 	<script type="text/javascript">
 	  jwplayer("myVideoPlayer").setup({
 	  file: "{{url}}",
-	  image: "https://s3.amazonaws.com/ravids/example2.jpg",
+	  image: "https://s3.amazonaws.com/rayvids/IntroImage.jpg",
 	  width: 640,
 	  height: 360
 	  });
@@ -158,7 +160,7 @@
     </div>
   </div>
   
-<div class="container marketing">
+<!--<div class="container marketing">
    <form class="bs-example bs-example-form" role="form">
       <div class="row">
          <div class="col-lg-6">
@@ -169,33 +171,48 @@
                   </button>
                </span>
                <input type="text" class="form-control">
-            </div><!-- /input-group -->
-         </div><!-- /.col-lg-6 --><br>
+            </div>
+         </div><br>
       </div>
    </form>
-</div>
+</div> -->
 <!--  <div class="span7 text-center">    
 
     <p><p><p><a class="btn btn-lg btn-primary" id="loadVideoButton" role="button">LOAD VIDEO</a></p></p></p>
   </div>
 </div>-->
-
+  <div id="download-container">
+    <hr class="featurette-divider"> 
+      <div class="span7 text-center"><h3>Downloadable Test Files (download, then drag and drop into the container below)</h3></div>
+      <div class="row">
+	<div class="col-md-3 col-md-offset-3"><h4>Test Video 1</h4></div>
+	<div class="col-md-3"><h4>Test Video 2</h4></div>
+      </div>
+      <div class="row">
+	<div class="col-md-3 col-md-offset-3">
+	  <!--<a href="https://s3.amazonaws.com/rayvids/Video1.zip" class="predownload" title="Video Report 1" id="https://s3.amazonaws.com/rayvids/Video1.zip">
+	    <img src="https://s3.amazonaws.com/rayvids/VideoPreview1.jpg" width="100" height="100" alt="gallery thumbnail"/></a>-->
+	  <a href="/content/Video1.zip" class="predownload" title="Video Report 1" id="/content/VideoPreview1.jpg">
+	    <img src="/content/VideoPreview1.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
+	</div>
+	<div class="col-md-3">
+	  <!--<a href="https://s3.amazonaws.com/rayvids/Video2.zip" class="predownload" title="Video Report 2" id="https://s3.amazonaws.com/rayvids/Video2.zip">
+	    <img src="https://s3.amazonaws.com/rayvids/VideoPreview2.jpg" width="100" height="100" alt="gallery thumbnail"/></a>-->
+	  <a href="/content/Video2.zip" class="predownload" title="Video Report 1" id="/content/VideoPreview2.jpg">
+	    <img src="/content/VideoPreview2.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
+	</div>
+      </div>
+  </div>
+  
 <div class="container marketing">
     <hr class="featurette-divider"> 
     <div class="span7 text-center">    
-      <div id="loading-indicator" style="display:none">
-	<img src="static/img/ajaxloader.gif">
-	<h3>Please be patient while we process your video.</h3>
-	<h3>This process may take several minutes.</h3>
-	<hr class="featurette-divider">
-      </div>
-      
       <div id="dropbox-container">
-	<h3>Drop any video below, click the Process button, and receive a video link.</h3>
+	<h3>Drop any video below and receive a video link to include in your radiology report.</h3>
 	<div id="dropbox">
 	  <span class="message">Drop videos here to upload.</span>
 	</div>      
-	<p><a class="btn btn-lg btn-primary" id="processVideoButton" role="button">PROCESS VIDEO</a></p>
+	<!--<p><a class="btn btn-lg btn-primary" id="processVideoButton" role="button">PROCESS VIDEO</a></p>-->
       </div>
     </div>
   </div>

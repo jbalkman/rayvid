@@ -16,6 +16,7 @@ ALLOWED_EXTENSIONS = ['mp4', 'mov']
 ACCESS_KEY = ''
 SECRET_KEY = ''
 KEY = ''
+#URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
 URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
 
 @app.route('/')
