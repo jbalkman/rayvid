@@ -35,14 +35,10 @@ $(function () {
 	}); */
     }
 
-   $("#loadVideoButton").on("click",function(e) {
+   $("#okButton").on("click",function(e) {
        e.preventDefault();
-       var player = jwplayer("myVideoPlayer");
-       if (player.length == 1) {
-           player = player[0];                          
-           player.sendEvent("LOAD", "https://s3.amazonaws.com/rayvids/TestVideo.mp4");
-       }
-       loadVideo();
+       $("#url-container").fadeOut();
+       removeImages();
     }); 
 
     function removeImages () {
