@@ -20,8 +20,9 @@ $(function(){
 	    }*/
 	    
 	    curr_url = response.url;
-	    
-	    alert("Here is your URL: "+curr_url);
+	    $("span.secret-url").text(curr_url);
+	    $("#url-container").fadeIn();
+	    //alert("Here is your URL: "+curr_url);
 	},
 	
     	error: function(err, file) {
