@@ -154,7 +154,15 @@
 	  autostart: true,
 	  image: "/content/IntroImage.jpg",
 	  width: 640,
-	  height: 360
+	  height: 360,
+	  events: {
+             onComplete:function() {
+	         $.get("/delete", { delurl:"{{url}}" },
+	            function() {
+                        //alert (data);
+	         });
+             }
+          }
 	  });
 	</script><br>
       </div>
@@ -185,9 +193,9 @@
       <hr class="featurette-divider"> 
       <h2><b><span class="secret-url"></span></b></h2>
       <div class="span7 text-center">    
-	<h4><br><br><br>Cut & paste the link above.<br><br><br>
+	<h4><br><br><br>INSTRUCTIONS & AGREEMENT<br><br><br>Cut & paste the link above.<br><br><br>
 	  I understand the link will expire and its content deleted in 24 hours or after the first play.<br><br><br>
-	  I will alert mooscans@gmail.com if I find health protected information on this video.<br><br><br></h4>
+	  I take full responsibility for the potential release of any health protected information on this video.<br><br><br></h4>
       </div>
       <br><br><a class="btn btn-lg btn-primary" id="okButton" role="button">GOT IT</a>
     </div>

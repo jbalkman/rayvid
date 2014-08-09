@@ -13,17 +13,40 @@ app.config.from_object(__name__)
 
 ALLOWED_EXTENSIONS = ['mp4', 'mov']
 
-ACCESS_KEY = ''
-SECRET_KEY = ''
+ACCESS_KEY = 'AKIAI43PMBB477YPQN6A'
+SECRET_KEY = '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'
 KEY = ''
-#URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
-URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
+URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
+#URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
 
 @app.route('/')
 def hello_world():
-   print 'Hello Rayvid!'
-   myurl = 'https://s3.amazonaws.com/rayvids/IntroVideo.mov'
+   print 'Hello Rayvid.'
+   myurl = '/content/IntroVideo.mp4'
    return render_template('index.html', url = myurl)
+
+@app.route('/delete', methods=['GET'])
+def delete_video():
+   print 'Deleting Rayvid.'
+
+   delurl = request.args.get('delurl')
+   dtk = delurl.rsplit('/',1)[1] # dtk = "delete this key"
+   print "My Delete Key: ", dtk
+
+   conn = S3Connection(ACCESS_KEY, SECRET_KEY)
+   bkt = conn.get_bucket('rayvids')
+   k = Key(bkt)
+
+   try:
+      k.key = dtk
+      bkt.delete_key(k)
+      print "Delete success."
+   except:
+      print "Delete failed."
+
+   print "Returning from delete..."
+
+   return "success"
 
 @app.route('/play_rayvid')
 def play_rayvid():
