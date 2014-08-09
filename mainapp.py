@@ -13,11 +13,11 @@ app.config.from_object(__name__)
 
 ALLOWED_EXTENSIONS = ['mp4', 'mov']
 
-ACCESS_KEY = 'AKIAI43PMBB477YPQN6A'
-SECRET_KEY = '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'
+ACCESS_KEY = ''
+SECRET_KEY = ''
 KEY = ''
-URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
-#URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
+#URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
+URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
 
 @app.route('/')
 def hello_world():
