@@ -23,7 +23,7 @@ URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
 def hello_world():
    print 'Hello Rayvid.'
    myurl = '/content/IntroVideo.mp4'
-   return render_template('index.html', url = myurl)
+   return render_template('index.html', url = myurl, source = "root")
 
 @app.route('/delete', methods=['GET'])
 def delete_video():
@@ -88,7 +88,7 @@ def upload():
          k.key = ctimestr+'.mp4'
          k.set_contents_from_file(file)
          bkt.set_acl('public-read', k.key)
-         url = URL_PREFIX+ctimestr+'.mp4'
+         url = URL_PREFIX+ctimestr+'.mp4#agreement'
 
    return jsonify({"success":True, "url": url})
 

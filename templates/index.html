@@ -16,25 +16,42 @@
 <!-- My custom styles  -->
 <link href="static/css/custom.css" rel="stylesheet">
 
+<!-- Modal style sheet  -->
+<link href="static/css/modal.css" rel="stylesheet">
+
 <!-- JQuery File Upload -->
 <link rel="stylesheet" href="static/css/styles.css">
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script type="text/javascript" src="static/js/jquery.filedrop.js"></script>
-<script type="text/javascript" src="static/js/display.js"></script>
 <script type="text/javascript" src="static/js/upload.js"></script>
 <script type="text/javascript" src="static/js/submit.js"></script>
 <script type="text/javascript" src="static/js/hover.js"></script>
 <script type="text/javascript" src="static/js/jquery.fileDownload.js"></script>
 <script src="http://jwpsrv.com/library/m26HJB26EeSKviIACyaB8g.js"></script>
+<script type="text/javascript" src="static/js/display.js">
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 
 <script src="static/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+  if("{{source}}" == "root") {
+     window.location = "#agreement";
+  }
+</script>
+
 </head>
 
 <body>
+  <a href="#x" class="overlay" id="agreement"></a>
+  <div class="popup">
+    <h2>User Agreement</h2>
+    <br><p>RAYVID is committed to patient safety and privacy. The RAVID website is a communication tool for medical professionals, but should not be used by itself to make clinical decisions. It is the user's responsibility to ensure that no patient protected information is uploaded to the RAYVID website. Uploaded content is deleted within 24 hours or upon first viewing. It is the user's responsibility to manage links provided by the RAYVID website accordingly.</p><br>
+    <a class="btn btn-lg btn-primary" id="agreeButton" role="button" href="#" >I AGREE</a>
+    <a class="close" href="#"></a>
+  </div>
+
   <div class="navbar-wrapper">
     <div class="container">
       <div class="navbar navbar-inverse navbar-static-top" role="navigation">
@@ -53,6 +70,7 @@
               <li class="active"><a href="#">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
+              <li><a href="#agreement">User Agreement</a></li>
               <!--<li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -72,98 +90,26 @@
     </div>
   </div>
     
-  <!-- Carousel 
-       ================================================== -->
-  <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="item active">
-        <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:" alt="First slide">
-        <img src="static/img/Fig1.jpg" alt="First slide">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Cloud-based Breast Density Analysis</h1>
-            <p>Take breast density measurement to the cloud, where computationally intensive processes can be managed by third party servers.</p>
-            <p><a class="btn btn-lg btn-primary" href="#dropbox-container" role="button">Try It Now</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img data-src="holder.js/900x500/auto/#666:#6a6a6a/text:" alt="Second slide">
-        <img src="static/img/Fig2.jpg" alt="Second slide">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Customized Open Source Algorithms</h1>
-            <p>Python-based open source algorithms can be customized and compared to create a collaborative research test bench.</p>
-            <p><a class="btn btn-lg btn-primary" href="#dropbox-container" role="button">Try It Now</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:" alt="Third slide">
-        <img src="static/img/Fig3.jpg" alt="Third slide">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Easy Usage</h1>
-            <p>Drag and drop any CC or MLO mammogram in DICOM, TIFF, or JPEG format into the drop box and click the analyze button to begin processing. Results will appear below.</p>
-            <p><a class="btn btn-lg btn-primary" href="#dropbox-container" role="button">Try It Now</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-  </div> --> <!-- /.carousel -->
-  <!-- Marketing messaging and featurettes
-       ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
-  <!--<div id="download-container">
-      <div class="span7 text-center"><h3>Downloadable Test Files (download, then drag and drop into the container below)</h3></div>
-      <div class="row">
-	<div class="col-md-3 col-md-offset-3"><h4>Test Patient 1</h4></div>
-	<div class="col-md-3"><h4>Test Patient 2</h4></div>
-      </div>
-      <div class="row">
-	<div class="col-md-3 col-md-offset-3">
-	  <a href="/downloads/MRI_1.zip" class="predownload" title="Patient 1 MRI" id="/downloads/MRIPreview_1.jpg">
-	    <img src="/downloads/MRIPreview_1.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
-	  <a href="/downloads/Mammo_1.zip" class="predownload" title="Patient 1 Mammogram" id="/downloads/MammoPreview_1.jpg">
-	    <img src="/downloads/MammoPreview_1.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
-	</div>
-	<div class="col-md-3">
-	  <a href="/downloads/MRI_2.zip" class="predownload" title="Patient 2 MRI" id="/downloads/MRIPreview_2.jpg">
-	    <img src="/downloads/MRIPreview_2.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
-	  <a href="/downloads/Mammo_2.zip" class="predownload" title="Patient 2 Mammogram" id="/downloads/MammoPreview_2.jpg">
-	    <img src="/downloads/MammoPreview_2.jpg" width="100" height="100" alt="gallery thumbnail"/></a>
-	</div>
-      </div>
-  </div>-->
-
   <div class="container marketing">
     <hr class="featurette-divider"> 
       <div class="col-md-8 col-md-offset-2">    
 	<div id="myVideoPlayer" class="center-block">Loading the player...</div>
 	<script type="text/javascript">
 	  jwplayer("myVideoPlayer").setup({
-	  file: "{{url}}",
-	  autostart: true,
-	  image: "/content/IntroImage.jpg",
-	  width: 640,
-	  height: 360,
-	  events: {
-             onComplete:function() {
-	         $.get("/delete", { delurl:"{{url}}" },
-	            function() {
-                        //alert (data);
-	         });
+	      file: "{{url}}",
+	      autostart: false,
+	      image: "/content/IntroImage.jpg",
+	      width: 640,
+	      height: 360,
+	      events: {
+                 onComplete:function() {
+	            $.get("/delete", { delurl:"{{url}}" },
+	                function() {
+                           //alert (data);
+	            });
+                 }
              }
-          }
-	  });
+          });
 	</script><br>
       </div>
     </div>
@@ -221,7 +167,7 @@
     <div class="span7 text-center">   
       <footer>
 	<p class="pull-right"><a href="#">Back to top</a></p>
-       <p>&copy; 2014 MOO Scans &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+       <p>&copy; 2014 MOO Scans &middot; <a href="#agreement">Privacy</a> &middot; <a href="#agreement">Terms</a></p>
       </footer>
     </div><!-- /.container -->
   </div>
