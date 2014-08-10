@@ -35,11 +35,20 @@ $(function () {
 	}); */
     }
 
+   $("#deleteButton").on("click",function(e) {
+       e.preventDefault();
+       $("#delete-container").fadeOut();
+       $.get("/delete", { delurl:url },
+	     function() {
+		 alert(url);
+	     });
+   }); 
+
    $("#okButton").on("click",function(e) {
        e.preventDefault();
        $("#url-container").fadeOut();
        removeImages();
-    }); 
+   }); 
 
     function removeImages () {
 	var dropbox = $('#dropbox'),

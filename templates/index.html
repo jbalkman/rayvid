@@ -36,9 +36,15 @@
 <script src="static/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-  if("{{source}}" == "root") {
-     window.location = "#agreement";
-  }
+     var url = "{{url}}";
+
+     window.onload = function() {
+       if("{{source}}" == "root") {
+          window.location = "#agreement";
+       } else {
+            document.getElementById("delete-container").style.display="block";
+       }
+     };
 </script>
 
 </head>
@@ -47,8 +53,21 @@
   <a href="#x" class="overlay" id="agreement"></a>
   <div class="popup">
     <h2>User Agreement</h2>
-    <br><p>RAYVID is committed to patient safety and privacy. The RAVID website is a communication tool for medical professionals, but should not be used by itself to make clinical decisions. It is the user's responsibility to ensure that no patient protected information is uploaded to the RAYVID website. Uploaded content is deleted within 24 hours or upon first viewing. It is the user's responsibility to manage links provided by the RAYVID website accordingly.</p><br>
+    <br><p>RAYVID is committed to patient safety and privacy. The RAVID website is a communication tool for medical professionals, but should not be used by itself to make clinical decisions. It is the user's responsibility to ensure that no patient protected information is uploaded to the RAYVID website. Uploaded content is either deleted by the user after viewing or automatically by the application 24 hours after it is uploaded. It is the user's responsibility to manage links provided by the RAYVID website accordingly.</p><br>
     <a class="btn btn-lg btn-primary" id="agreeButton" role="button" href="#" >I AGREE</a>
+  </div>
+
+  <a href="#x" class="overlay" id="about"></a>
+  <div class="popup">
+    <h2>About</h2>
+    <br><p>RAYVID is a communication tool for medical professionals. Its primary intended use is for radiologists to share anonymized screen capture videos of radiology findings with other physcians and patients. Beyond this, the service can be used to share other anonymized medical-related communications. To help protect patient privacy, all uploaded content is deleted within 24 hours or directly by the user.</p><br>
+    <a class="close" href="#"></a>
+  </div>
+
+  <a href="#x" class="overlay" id="contact"></a>
+  <div class="popup">
+    <h2>Contact</h2>
+    <br><p>For more information, please contact the developer of RAYVID, Jason Balkman, MD, directly: mooscans@gmail.com</p><br>
     <a class="close" href="#"></a>
   </div>
 
@@ -92,29 +111,33 @@
     
   <div class="container marketing">
     <hr class="featurette-divider"> 
-      <div class="col-md-8 col-md-offset-2">    
-	<div id="myVideoPlayer" class="center-block">Loading the player...</div>
-	<script type="text/javascript">
-	  jwplayer("myVideoPlayer").setup({
-	      file: "{{url}}",
-	      autostart: false,
-	      image: "/content/IntroImage.jpg",
-	      width: 640,
-	      height: 360,
-	      events: {
-                 onComplete:function() {
-	            $.get("/delete", { delurl:"{{url}}" },
-	                function() {
-                           //alert (data);
-	            });
-                 }
-             }
-          });
-	</script><br>
-      </div>
+    <div class="col-md-8 col-md-offset-2">    
+      <div id="myVideoPlayer" class="center-block">Loading the player...</div>
+      <script type="text/javascript">
+	jwplayer("myVideoPlayer").setup({
+     	    //file: "{{url}}",
+     	    file: url,
+ 	    autostart: false,
+	        image: "/content/IntroImage.jpg",
+	    width: 800,
+	    height: 450,
+	    events: {
+                onComplete:function() {
+	          /*$.get("/delete", { delurl:"{{url}}" },
+	                 function() {
+                         //alert (data);
+	          });*/
+                }
+            }
+        });
+      </script><br>
     </div>
   </div>
-  
+
+  <div id="delete-container" class="span7 text-center" style="display:none">
+    <br><br><a class="btn btn-lg btn-primary" id="deleteButton" role="button">DELETE VIDEO</a>
+  </div>
+
   <div id="download-container">
     <hr class="featurette-divider"> 
       <div class="span7 text-center"><h3>Downloadable Test Files (download, then drag and drop into the container below)</h3></div>
@@ -140,8 +163,8 @@
       <h2><b><span class="secret-url"></span></b></h2>
       <div class="span7 text-center">    
 	<h4><br><br><br>INSTRUCTIONS & AGREEMENT<br><br><br>Cut & paste the link above.<br><br><br>
-	  I understand the link will expire and its content deleted in 24 hours or after the first play.<br><br><br>
-	  I take full responsibility for the potential release of any health protected information on this video.<br><br><br></h4>
+	  I take full responsibility for the potential release of any health protected information in this video.<br><br><br>
+	If the video is not deleted directly by the viewer, the link will automatically expire and its content expunged permanently within 24 hours.<br><br><br></h4>
       </div>
       <br><br><a class="btn btn-lg btn-primary" id="okButton" role="button">GOT IT</a>
     </div>
