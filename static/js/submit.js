@@ -40,7 +40,7 @@ $(function () {
        $("#delete-container").fadeOut();
        $.get("/delete", { delurl:url },
 	     function() {
-		 alert(url);
+		 //alert(url);
 	     });
    }); 
 
