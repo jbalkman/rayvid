@@ -13,11 +13,11 @@ app.config.from_object(__name__)
 
 ALLOWED_EXTENSIONS = ['mp4', 'mov']
 
-ACCESS_KEY = ''
-SECRET_KEY = ''
+ACCESS_KEY = 'AKIAI43PMBB477YPQN6A'
+SECRET_KEY = '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'
 KEY = ''
-#URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
-URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
+URL_PREFIX = 'http://127.0.0.1:5000/play_rayvid?key='
+#URL_PREFIX = 'http://www.rayvid.com/play_rayvid?key='
 
 @app.route('/')
 def hello_world():
@@ -30,7 +30,8 @@ def delete_video():
    print 'Deleting Rayvid.'
 
    delurl = request.args.get('delurl')
-   dtk = delurl.rsplit('/',1)[1] # dtk = "delete this key"
+   print "My Delete URL: ", delurl
+   dtk = delurl.rsplit('.com/',1)[1] # dtk = "delete this key"
    print "My Delete Key: ", dtk
 
    conn = S3Connection(ACCESS_KEY, SECRET_KEY)
@@ -80,7 +81,7 @@ def upload():
       if file and allowed_file(file.filename):
          #now = datetime.now()
 
-         sfile = file.filename.rsplit('.',1)[0].split('-')
+         sfile = file.filename.rsplit('.',1)[0].split('-');
          exdel = int(sfile[-1])
          vwdel = int(sfile[-2])
 
@@ -100,7 +101,6 @@ def upload():
          k.set_contents_from_file(file)
          bkt.set_acl('public-read', k.key)
          url = URL_PREFIX+keystr+'.mp4#agreement'
-         print url
 
    return jsonify({"success":True, "url": url})
 
