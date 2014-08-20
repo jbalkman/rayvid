@@ -248,101 +248,94 @@
 		return undefined;
 	}
     
-    // Override this function to encode the number of files and file index into the filename while preserving the extension
+    // Override this function to encode whether or not there is viewer delete and/or 24-hour automatic delete
     function rename(name, idx) {
 	var nn;
+	var vwdel = 0; 
+	var exdel = 0;
 
-	// Replace file name with current time + file count + index; keep the extension the same
+	if ($('#vwdel').is(":checked")) {
+	    vwdel = 1;
+	}
+
+	if ($('#exdel').is(":checked")) {
+	    exdel = 1;
+	}
+
+	// Replace file name with current time + file count + index + viewer delete + expiration delete; keep the extension the same
 	fnamesplit = name.split(".");
-	nn = file_prefix+"-"+files_count+"-"+idx+"."+fnamesplit[fnamesplit.length - 1];
-
-	// Keeps the original file name
-	/*fnamesplit = name.split(".");
-	if (fnamesplit.length > 2) {
-	    nn = fnamesplit.slice(0,fnamesplit.length - 2).concat("-"+file_prefix+"-"+files_count+"-"+idx+"."+fnamesplit[fnamesplit.length - 1]);
-	} else {
-	    nn = fnamesplit[0].concat("-"+file_prefix+"-"+files_count+"-"+idx+"."+fnamesplit[fnamesplit.length - 1]);
-	}*/
-
-	// Implementation passing file_count and index and burden on the server side to create unique file name; didn't work b/c server couldn't remember base name between requests
-	/*fnamesplit = name.split(".");
-	if (fnamesplit.length > 2) {
-	    nn = fnamesplit.slice(0,fnamesplit.length - 2).concat("/"+files_count+"/"+idx+"."+fnamesplit[fnamesplit.length - 1]);
-	} else {
-	    nn = fnamesplit[0].concat("/"+files_count+"/"+idx+"."+fnamesplit[fnamesplit.length - 1]);
-	}*/
+	nn = file_prefix+"-"+files_count+"-"+idx+"-"+vwdel+"-"+exdel+"."+fnamesplit[fnamesplit.length - 1];
 
 	return nn;
-	//return opts.rename(name); // this is the old function
     }
 	
 
 
-	function beforeEach(file) {
-		return opts.beforeEach(file);
+    function beforeEach(file) {
+	return opts.beforeEach(file);
+    }
+    
+    function afterAll() {
+	return opts.afterAll();
+    }
+    
+    function dragEnter(e) {
+	clearTimeout(doc_leave_timer);
+	e.preventDefault();
+	opts.dragEnter(e);
+    }
+    
+    function dragOver(e) {
+	clearTimeout(doc_leave_timer);
+	e.preventDefault();
+	opts.docOver(e);
+	opts.dragOver(e);
+    }
+    
+    function dragLeave(e) {
+	clearTimeout(doc_leave_timer);
+	opts.dragLeave(e);
+	e.stopPropagation();
+    }
+    
+    function docDrop(e) {
+	e.preventDefault();
+	opts.docLeave(e);
+	return false;
+    }
+    
+    function docEnter(e) {
+	clearTimeout(doc_leave_timer);
+	e.preventDefault();
+	opts.docEnter(e);
+	return false;
+    }
+    
+    function docOver(e) {
+	clearTimeout(doc_leave_timer);
+	e.preventDefault();
+	opts.docOver(e);
+	return false;
+    }
+    
+    function docLeave(e) {
+	doc_leave_timer = setTimeout(function(){
+	    opts.docLeave(e);
+	}, 200);
+    }
+    
+    function empty(){}
+    
+    try {
+	if (XMLHttpRequest.prototype.sendAsBinary) return;
+	XMLHttpRequest.prototype.sendAsBinary = function(datastr) {
+	    function byteValue(x) {
+		return x.charCodeAt(0) & 0xff;
+	    }
+	    var ords = Array.prototype.map.call(datastr, byteValue);
+	    var ui8a = new Uint8Array(ords);
+	    this.send(ui8a.buffer);
 	}
-	
-	function afterAll() {
-		return opts.afterAll();
-	}
-	
-	function dragEnter(e) {
-		clearTimeout(doc_leave_timer);
-		e.preventDefault();
-		opts.dragEnter(e);
-	}
-	
-	function dragOver(e) {
-		clearTimeout(doc_leave_timer);
-		e.preventDefault();
-		opts.docOver(e);
-		opts.dragOver(e);
-	}
-	 
-	function dragLeave(e) {
-		clearTimeout(doc_leave_timer);
-		opts.dragLeave(e);
-		e.stopPropagation();
-	}
-	 
-	function docDrop(e) {
-		e.preventDefault();
-		opts.docLeave(e);
-		return false;
-	}
-	 
-	function docEnter(e) {
-		clearTimeout(doc_leave_timer);
-		e.preventDefault();
-		opts.docEnter(e);
-		return false;
-	}
-	 
-	function docOver(e) {
-		clearTimeout(doc_leave_timer);
-		e.preventDefault();
-		opts.docOver(e);
-		return false;
-	}
-	 
-	function docLeave(e) {
-		doc_leave_timer = setTimeout(function(){
-			opts.docLeave(e);
-		}, 200);
-	}
-	 
-	function empty(){}
-	
-	try {
-		if (XMLHttpRequest.prototype.sendAsBinary) return;
-		XMLHttpRequest.prototype.sendAsBinary = function(datastr) {
-		    function byteValue(x) {
-		        return x.charCodeAt(0) & 0xff;
-		    }
-		    var ords = Array.prototype.map.call(datastr, byteValue);
-		    var ui8a = new Uint8Array(ords);
-		    this.send(ui8a.buffer);
-		}
-	} catch(e) {}
-     
+    } catch(e) {}
+    
 })(jQuery);

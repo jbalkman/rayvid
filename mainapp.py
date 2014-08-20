@@ -80,15 +80,26 @@ def upload():
       if file and allowed_file(file.filename):
          #now = datetime.now()
 
+         sfile = file.filename.rsplit('.',1)[0].split('-');
+         exdel = int(sfile[-1])
+         vwdel = int(sfile[-2])
+
          conn = S3Connection(ACCESS_KEY, SECRET_KEY)
          bkt = conn.get_bucket('rayvids')
          k = Key(bkt)
          ctime = datetime.now()
-         ctimestr = ctime.strftime('%f')
-         k.key = ctimestr+'.mp4'
+         keystr = ctime.strftime('%f')
+         
+         if exdel > 0:
+            keystr = 'tmp/'+keystr               
+            
+         if vwdel > 0:
+            keystr = keystr+'_'
+
+         k.key = keystr+'.mp4'
          k.set_contents_from_file(file)
          bkt.set_acl('public-read', k.key)
-         url = URL_PREFIX+ctimestr+'.mp4#agreement'
+         url = URL_PREFIX+keystr+'.mp4#agreement'
 
    return jsonify({"success":True, "url": url})
 

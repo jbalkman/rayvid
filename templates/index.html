@@ -41,9 +41,9 @@
      window.onload = function() {
        if("{{source}}" == "root") {
           window.location = "#agreement";
-       } else {
-            document.getElementById("delete-container").style.display="block";
-       }
+       } else if (url.split("_").length > 1) {
+          document.getElementById("delete-container").style.display="block";     
+       } 
      };
 </script>
 
@@ -173,16 +173,26 @@
 <div class="container marketing">
     <hr class="featurette-divider"> 
     <div class="span7 text-center">    
-      <div id="dropbox-container">
-	<h3>Drop any video below and receive a video link to include in your radiology report.</h3>
-	<div id="dropbox">
-	  <span class="message">Drop videos here to upload.</span>
-	</div>      
-      </div>
-    </div>
-  </div>
+      <h3>Drop any video below and receive a video link to include in your radiology report.</h3>
+     </div>
+</div>
 
-  <!-- /END THE FEATURETTES -->
+<div id="dropbox-container">
+  <div id="dropbox">
+    <span class="message">Drop videos here to upload.</span>
+  </div>      
+</div>
+
+<div class="span7 text-center">
+  <form class="form-inline">
+    <input id="vwdel" type="checkbox" checked="checked">
+    <label class="checkbox inline" for="vwdel">Viewer Delete</label><br>
+    <input id="exdel" type="checkbox">
+    <label class="checkbox" for="exdel">24-hour Expiration</label>
+  </form>
+</div>
+
+<!-- /END THE FEATURETTES -->
   
   <!-- FOOTER -->
   <div class="container marketing">
