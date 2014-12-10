@@ -26,4 +26,29 @@ $(function(){
        jwplayer("myVideoPlayer").load([{file:"/content/BreastCase5.mp4", image:"/content/Slide5.jpg"}]);
    });
 
+   $("#example-6").on("click",function(e) {
+       e.preventDefault();
+       jwplayer("myVideoPlayer").load([{file:"/content/BreastCase6.mp4", image:"/content/Slide6.jpg"}]);
+   });
+
+   $("#example-7").on("click",function(e) {
+       e.preventDefault();
+       jwplayer("myVideoPlayer").load([{file:"/content/BreastCase7.mp4", image:"/content/Slide7.jpg"}]);
+   });
+
+   $("#example-8").on("click",function(e) {
+       e.preventDefault();
+       jwplayer("myVideoPlayer").load([{file:"/content/BreastCase8.mp4", image:"/content/Slide8.jpg"}]);
+   });
+
+   $("#example-9").on("click",function(e) {
+       e.preventDefault();
+       jwplayer("myVideoPlayer").load([{file:"/content/BreastCase9.mp4", image:"/content/Slide9.jpg"}]);
+   });
+
+   $("#example-10").on("click",function(e) {
+       e.preventDefault();
+       jwplayer("myVideoPlayer").load([{file:"/content/BreastCase10.mp4", image:"/content/Slide10.jpg"}]);
+   });
+
 });
